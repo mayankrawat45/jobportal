@@ -23,7 +23,7 @@ connectDB();
 // Middlewares
 app.use(express.json());
 app.use(cors({
-    origin: ['http://localhost:5173', 'http://localhost:5174'],
+    origin: ['https://jobportal-3pssuvg1i-mayank-singh-rawats-projects.vercel.app', 'https://jobportal-frontend-hazel.vercel.app/'],
     credentials: true
 }));
 
