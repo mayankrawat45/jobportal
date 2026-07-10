@@ -13,7 +13,7 @@ import inquiryRouter from "./routes/inquiry.routes.js";
 
 
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 const app = express();
 
 
@@ -23,7 +23,7 @@ connectDB();
 // Middlewares
 app.use(express.json());
 app.use(cors({
-    origin: ['https://jobportal-3pssuvg1i-mayank-singh-rawats-projects.vercel.app', 'https://jobportal-frontend-hazel.vercel.app/'],
+    origin: ['https://jobportal-3pssuvg1i-mayank-singh-rawats-projects.vercel.app', 'https://jobportal-frontend-hazel.vercel.app'],
     credentials: true
 }));
 
