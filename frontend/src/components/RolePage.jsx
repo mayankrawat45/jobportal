@@ -71,7 +71,7 @@ const RolePage = () => {
   useEffect(() => {
     const fetchRoles = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/interview/roles");
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/interview/roles`);
         const data = await res.json();
         if (data.success && data.roles) {
           setRoles(data.roles);
@@ -108,7 +108,7 @@ const RolePage = () => {
       setLoadingQuestions(true);
       try {
         const res = await fetch(
-          `http://localhost:5000/api/interview/role/${selectedRoleId}`,
+          `${import.meta.env.VITE_API_URL}/api/interview/role/${selectedRoleId}`,
         );
         const data = await res.json();
 
@@ -131,7 +131,7 @@ const RolePage = () => {
         const token = rawUser ? JSON.parse(rawUser).token : null;
         if (!token) return;
 
-        const res = await fetch("http://localhost:5000/api/saved", {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/saved`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -178,7 +178,7 @@ const RolePage = () => {
       }
 
       const res = await fetch(
-        `http://localhost:5000/api/saved/question/${id}?type=role`,
+        `${import.meta.env.VITE_API_URL}/api/saved/question/${id}?type=role`,
         {
           method: "POST",
           headers: {

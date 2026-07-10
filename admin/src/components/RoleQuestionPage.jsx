@@ -195,7 +195,7 @@ const RoleQuestionPage = () => {
 
             formDataToSend.append("questionsData", JSON.stringify(questions));
 
-            const response = await axios.post("http://localhost:5000/api/interview/role",
+            const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/interview/role`,
                 formDataToSend,
                 {
                     headers: {
@@ -416,7 +416,7 @@ const RoleQuestionPage = () => {
 
     return (
         <div className={s.pageContainer}>
-            <style jsx>{`
+            <style >{`
         @keyframes fadeInUp {
           from {
             opacity: 0;

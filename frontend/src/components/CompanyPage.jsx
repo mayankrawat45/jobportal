@@ -44,7 +44,7 @@ const CompanyPage = () => {
         const fetchCompanies = async () => {
             try {
                 const response = await axios.get(
-                    "http://localhost:5000/api/interview/companies"
+                    `${import.meta.env.VITE_API_URL}/api/interview/companies`
                 )
                 if (response.data.success) {
                     setCompanies(response.data.companies);
@@ -71,7 +71,7 @@ const CompanyPage = () => {
                 const token = rawUser ? JSON.parse(rawUser).token : null;
                 if (!token) return
 
-                const res = await fetch("http://localhost:5000/api/saved", {
+                const res = await fetch(`${import.meta.env.VITE_API_URL}/api/saved`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     }
@@ -100,7 +100,7 @@ const CompanyPage = () => {
             setLoading(true);
             try {
                 const response = await axios.get(
-                    `http://localhost:5000/api/interview/company/${selectedCompany}`
+                    `${import.meta.env.VITE_API_URL}/api/interview/company/${selectedCompany}`
                 )
                 if (response.data.success) {
 
@@ -133,7 +133,7 @@ const CompanyPage = () => {
             }
 
             const res = await fetch(
-                `http://localhost:5000/api/saved/question/${id}?type=interview`,
+                `${import.meta.env.VITE_API_URL}/api/saved/question/${id}?type=interview`,
                 {
                     method: "POST",
                     headers: {

@@ -21,7 +21,7 @@ useEffect(()=>{
     const fetchCompanies = async () =>{
         try {
             const token = localStorage.getItem("token");
-            const res = await axios.get("http://localhost:5000/api/company",{
+            const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/company`,{
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -90,7 +90,7 @@ const handleSubmit = async (e) =>{
         formData.append("website", website.trim());
 
         const res = await axios.post(
-            'http://localhost:5000/api/company',
+            `${import.meta.env.VITE_API_URL}/api/company`,
             formData,
             {
                 headers:{Authorization: `Bearer ${token}`},
@@ -130,7 +130,7 @@ const requestDeleteCompany  = (companyId) => {
 const handleConfirmDelete = async () =>{
     try {
         const token = localStorage.getItem("token");
-        await axios.delete(`http://localhost:5000/api/company/${pendingDeleteId}`,{ 
+        await axios.delete(`${import.meta.env.VITE_API_URL}/api/company/${pendingDeleteId}`,{ 
             headers: {Authorization: `Bearer ${token}`},
         });
         setCompanies((prev) =>prev.filter((c) =>c._id !== pendingDeleteId));

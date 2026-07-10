@@ -21,7 +21,7 @@ const ViewApplicantPage = () => {
       try {
         const token = localStorage.getItem("token");
         const res = await fetch(
-          `http://localhost:5000/api/application/${jobId}/applicants`, {
+          `${import.meta.env.VITE_API_URL}/api/application/${jobId}/applicants`, {
           headers: { Authorization: `Bearer ${token}` },
         },
         );
@@ -59,7 +59,7 @@ const ViewApplicantPage = () => {
 
   const handleViewResume = (resumeUrl, userId) => {
     if (!resumeUrl) return;
-    const fullUrl = `http://localhost:5000/api/user/resume/${userId}`;
+    const fullUrl = `${import.meta.env.VITE_API_URL}/api/user/resume/${userId}`;
     const link = document.createElement("a");
     link.href = fullUrl;
     link.target = "_blank";

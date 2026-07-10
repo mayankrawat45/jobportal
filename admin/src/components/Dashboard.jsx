@@ -34,7 +34,7 @@ const Dashboard = () => {
 
                 // to fetch stats 
                 const statsRes = await fetch(
-                    "http://localhost:5000/api/job/admin/stats",
+                    `${import.meta.env.VITE_API_URL}/api/job/admin/stats`,
                     {
                         headers: { Authorization: `Bearer ${token}` },
                     },
@@ -46,7 +46,7 @@ const Dashboard = () => {
 
                 // to fetch the jobs
                 const jobsRes = await fetch(
-                    "http://localhost:5000/api/job/admin/jobs",
+                    `${import.meta.env.VITE_API_URL}/api/job/admin/jobs`,
                     {
                         headers: { Authorization: `Bearer ${token}` }
                     }
@@ -61,7 +61,7 @@ const Dashboard = () => {
                         category: j.category,
                         logo: j.companyLogo?.startsWith("http")
                             ? j.companyLogo
-                            : `http://localhost:5000${j.companyLogo || ""}`,
+                            : `${import.meta.env.VITE_API_URL}${j.companyLogo || ""}`,
                         applicants: j.applicantsCount || 0,
                         status: j.status || "active",
                     }));
@@ -101,7 +101,7 @@ const Dashboard = () => {
 
         try {
             const token = localStorage.getItem("token");
-            const res = await fetch(`http://localhost:5000/api/job/${jobId}/close`, {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/job/${jobId}/close`, {
                 method: "PATCH",
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -114,7 +114,7 @@ const Dashboard = () => {
                 setToast({ message: "Job closed successfully!", type: "success" });
                 // refresh the stats
                 const statsRes = await fetch(
-                    "http://localhost:5000/api/job/admin/stats",
+                    `${import.meta.env.VITE_API_URL}/api/job/admin/stats`,
                     {
                         headers: { Authorization: `Bearer ${token}` }
                     },
@@ -126,7 +126,7 @@ const Dashboard = () => {
                 }
 
                 const jobsRes = await fetch(
-                    "http://localhost:5000/api/job/admin/jobs",
+                    `${import.meta.env.VITE_API_URL}/api/job/admin/jobs`,
                     {
                         headers: { Authorization: `Bearer ${token}` },
                     }
@@ -141,7 +141,7 @@ const Dashboard = () => {
                         category: j.category,
                         logo: j.companyLogo?.startsWith("http")
                             ? j.companyLogo
-                            : `http://localhost:5000${j.companyLogo || ""}`,
+                            : `${import.meta.env.VITE_API_URL}${j.companyLogo || ""}`,
                         applicants: j.applicantsCount || 0,
                         status: j.status || "active",
                     }));

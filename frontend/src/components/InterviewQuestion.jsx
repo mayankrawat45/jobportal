@@ -13,8 +13,8 @@ const InterviewQuestion = () => {
             setLoading(true);
             try {
                 const[companiesRes ,roleRes] = await Promise.all([
-                    fetch("http://localhost:5000/api/interview/companies"),
-                    fetch("http://localhost:5000/api/interview/roles")
+                    fetch(`${import.meta.env.VITE_API_URL}/api/interview/companies`),
+                    fetch(`${import.meta.env.VITE_API_URL}/api/interview/roles`)
                 ]);
 
                 const companiesData = await companiesRes.json();

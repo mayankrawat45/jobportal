@@ -443,7 +443,7 @@ const Navbar = ({ logoSrc, brandName = "Job Portal", onNavigate }) => {
                       </span>
                     </div>
                     <button onClick={handleLogout} className={s.mobileLogoutButton}>
-                      <Logout className={s.mobileNavIcon} />
+                      <LogOut className={s.mobileNavIcon} />
                       <span>Logout</span>
                     </button>
                   </>

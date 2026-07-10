@@ -117,11 +117,11 @@ const SavePage = () => {
       }
 
       const [savedRes, rolesRes, companiesRes] = await Promise.all([
-        fetch("http://localhost:5000/api/saved", {
+        fetch(`${import.meta.env.VITE_API_URL}/api/saved`, {
           headers: { Authorization: `Bearer ${token}` },
         }),
-        fetch("http://localhost:5000/api/interview/roles"),
-        fetch("http://localhost:5000/api/interview/companies"),
+        fetch(`${import.meta.env.VITE_API_URL}/api/interview/roles`),
+        fetch(`${import.meta.env.VITE_API_URL}/api/interview/companies`),
       ]);
 
       const savedData = await savedRes.json();
@@ -204,7 +204,7 @@ const SavePage = () => {
         : ["interview", rawId];
 
       const res = await fetch(
-        `http://localhost:5000/api/saved/question/${id}?type=${kind}`,
+        `${import.meta.env.VITE_API_URL}/api/saved/question/${id}?type=${kind}`,
         {
           method: "POST",
           headers: {
@@ -227,7 +227,7 @@ const SavePage = () => {
       const token = rawUser ? JSON.parse(rawUser).token : null;
       if (!token) return;
 
-      const res = await fetch(`http://localhost:5000/api/saved/job/${jobId}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/saved/job/${jobId}`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -314,7 +314,7 @@ const SavePage = () => {
         company: job.companyName,
         logo: job.companyLogo?.startsWith("http")
           ? job.companyLogo
-          : `http://localhost:5000${job.companyLogo || ""}`,
+          : `${import.meta.env.VITE_API_URL}${job.companyLogo || ""}`,
         datePosted: job.postDate || job.createdAt,
       },
       raw: String(job._id),
@@ -451,7 +451,7 @@ const SavePage = () => {
         return;
       }
 
-      const res = await fetch("http://localhost:5000/api/user/profile", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/user/profile`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
@@ -517,7 +517,7 @@ const SavePage = () => {
       }
 
       const res = await fetch(
-        `http://localhost:5000/api/application/apply/${confirmToast.jobId}`,
+        `${import.meta.env.VITE_API_URL}/api/application/apply/${confirmToast.jobId}`,
         {
           method: "POST",
           headers: {

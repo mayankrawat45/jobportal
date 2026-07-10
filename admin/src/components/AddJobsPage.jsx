@@ -374,7 +374,7 @@ const AddJobsPage = () => {
                 } // append all the fields filled by user
                 const token = localStorage.getItem("token");
                 const response = await axios.post(
-                    "http://localhost:5000/api/job",
+                    `${import.meta.env.VITE_API_URL}/api/job`,
                     formDataToSend,
                     {
                         headers: {
